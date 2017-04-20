@@ -13,10 +13,6 @@ class Oystercard
     increment_balance(amount)
   end
 
-  def deduct(fare)
-    self.balance -= fare
-  end
-
   def in_journey?
     in_journey
   end
@@ -30,6 +26,7 @@ class Oystercard
   def touch_out
     raise 'ERROR! Not travelling!' if !in_journey?
     change_journey_status
+    deduct(FARE)
   end
 
   private
@@ -38,6 +35,7 @@ class Oystercard
 
   MAX_BALANCE = 100
   LOW_BALANCE = 1
+  FARE = 2
 
   def exceed_balance?(amount)
     self.balance + amount > MAX_BALANCE
@@ -45,6 +43,10 @@ class Oystercard
 
   def increment_balance(amount)
     self.balance += amount
+  end
+
+  def deduct(fare)
+    self.balance -= fare
   end
 
   def change_journey_status

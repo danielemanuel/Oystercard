@@ -21,12 +21,6 @@ describe Oystercard do
     end
   end
 
-  describe '#deduct' do
-    it 'Expects #deduct to change balance' do
-      expect { oystercard.deduct(1) }.to change { oystercard.balance }.by(-1)
-    end
-  end
-
   describe '#in_journey?' do
     it 'Expects #in_journey to return false' do
       expect(oystercard.in_journey?).to eq false
@@ -70,6 +64,7 @@ describe Oystercard do
       context "change balance" do
         it "deducts fare" do
           oystercard.top_up(20)
+          oystercard.touch_in
           expect { oystercard.touch_out }.to change {oystercard.balance }.by -2
         end
       end
