@@ -79,7 +79,7 @@ describe Oystercard do
         oystercard.top_up(20)
         oystercard.touch_in(station)
         oystercard.touch_out
-        expect(oystercard.all_stations).to eq station
+        expect(oystercard.all_stations).to eq [station]
       end
 
     end
