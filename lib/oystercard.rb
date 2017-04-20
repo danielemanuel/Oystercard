@@ -5,7 +5,7 @@ class Oystercard
 
   def initialize(balance = 0)
     @balance = balance
-    @all_stations = []
+
   end
 
   def top_up(amount = 0)
@@ -21,7 +21,6 @@ class Oystercard
     raise 'Not enough funds' if balance < LOW_BALANCE
     raise 'Already travelling' if in_journey?
     store_entry_station(station)
-    update_stations_list(station)
   end
 
   def touch_out(station)
@@ -31,9 +30,10 @@ class Oystercard
     update_stations_list(station)
   end
 
+
   private
 
-  attr_writer :balance, :entry_station, :all_stations
+  attr_writer :balance, :entry_station, :all_station
 
   MAX_BALANCE = 100
   LOW_BALANCE = 1
