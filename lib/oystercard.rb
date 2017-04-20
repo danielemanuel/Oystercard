@@ -1,7 +1,7 @@
 
 class Oystercard
 
-  attr_reader :balance, :entry_station
+  attr_reader :balance, :entry_station, :all_stations
 
   def initialize(balance = 0)
     @balance = balance
@@ -29,14 +29,10 @@ class Oystercard
     reset_entry_station
   end
 
-  def all_stations
-
-
-  end
 
   private
 
-  attr_writer :balance, :entry_station
+  attr_writer :balance, :entry_station, :all_station
 
   MAX_BALANCE = 100
   LOW_BALANCE = 1
@@ -60,6 +56,10 @@ class Oystercard
 
   def reset_entry_station
     self.entry_station = nil
+  end
+
+  def update_stations_list(station)
+    all_stations << station
   end
 
 end
