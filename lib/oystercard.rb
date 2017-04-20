@@ -2,6 +2,7 @@
 class Oystercard
 
   attr_reader :balance, :in_journey, :entry_station
+  
 
   def initialize(balance = 0)
     @balance = balance
@@ -17,11 +18,11 @@ class Oystercard
     in_journey
   end
 
-  def touch_in(entry_station)
+  def touch_in(station)
     raise 'Not enough funds' if balance < LOW_BALANCE
     raise 'Already travelling' if in_journey?
     change_journey_status
-    @entry_station = station
+    store_entry_station(station)
   end
 
   def touch_out
@@ -30,13 +31,9 @@ class Oystercard
     deduct(FARE)
   end
 
-  # def station
-  #
-  # end
-
   private
 
-  attr_writer :balance, :in_journey
+  attr_writer :balance, :in_journey, :entry_station
 
   MAX_BALANCE = 100
   LOW_BALANCE = 1
@@ -57,5 +54,9 @@ class Oystercard
   def change_journey_status
     return self.in_journey = false if in_journey?
     return self.in_journey = true if in_journey? == false
+  end
+
+  def store_entry_station(station)
+      self.entry_station = station
   end
 end
