@@ -69,5 +69,14 @@ describe Oystercard do
           expect { oystercard.touch_out }.to change {oystercard.balance }.by -2
         end
       end
+
+      it "resets the entry_station when you touch_out" do
+        oystercard.top_up(20)
+        oystercard.touch_in
+        oystercard.in_journey?
+        oystercard.touch_out
+        expect(oystercard.entry_station).to be_nil
+      end
+
   end
 end

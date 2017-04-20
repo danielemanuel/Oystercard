@@ -2,7 +2,6 @@
 class Oystercard
 
   attr_reader :balance, :in_journey, :entry_station
-  
 
   def initialize(balance = 0)
     @balance = balance
@@ -29,6 +28,7 @@ class Oystercard
     raise 'ERROR! Not travelling!' if !in_journey?
     change_journey_status
     deduct(FARE)
+    
   end
 
   private
