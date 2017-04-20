@@ -28,7 +28,7 @@ class Oystercard
     raise 'ERROR! Not travelling!' if !in_journey?
     change_journey_status
     deduct(FARE)
-    
+    reset_entry_station
   end
 
   private
@@ -59,4 +59,10 @@ class Oystercard
   def store_entry_station(station)
       self.entry_station = station
   end
+
+  def reset_entry_station
+    self.entry_station = nil
+  end
+
+
 end

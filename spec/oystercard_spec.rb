@@ -45,15 +45,10 @@ describe Oystercard do
           expect { oystercard.touch_in }.to raise_error 'Not enough funds'
         end
       end
-      it "stores an instance of Station" do
-      oystercard.top_up(10)
-      oystercard.touch_in(station)
-      expect(oystercard.entry_station).to eq station
-    end
   end
 
   describe '#touch_out' do
-    let(:station) {double(:station)}
+
     xit 'changes #in_journey to false' do
       oystercard.top_up(10)
       oystercard.touch_in
@@ -70,14 +65,22 @@ describe Oystercard do
           expect { oystercard.touch_out }.to change {oystercard.balance }.by -2
         end
       end
+    end
+
+  describe "#station" do
+    let(:station) {double(:station)}
+      it "stores an instance of Station" do
+        oystercard.top_up(10)
+        oystercard.touch_in(station)
+        expect(oystercard.entry_station).to eq station
+      end
 
       it "resets the entry_station when you touch_out" do
         oystercard.top_up(20)
         oystercard.touch_in(station)
-        oystercard.in_journey?
         oystercard.touch_out
         expect(oystercard.entry_station).to be_nil
       end
+end
 
-  end
 end
