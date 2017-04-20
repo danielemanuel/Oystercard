@@ -24,10 +24,11 @@ class Oystercard
     update_stations_list(station)
   end
 
-  def touch_out
+  def touch_out(station)
     raise 'ERROR! Not travelling!' if !in_journey?
     deduct(FARE)
     reset_entry_station
+    update_stations_list(station)
   end
 
   private
@@ -60,6 +61,7 @@ class Oystercard
 
   def update_stations_list(station)
     all_stations << station
+
   end
 
 end
