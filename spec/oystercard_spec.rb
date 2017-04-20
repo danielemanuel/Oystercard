@@ -74,6 +74,13 @@ describe Oystercard do
       end
 
       it { is_expected.to respond_to :all_stations }
-  end
 
+      it "should displayed us all the previous stations" do
+        oystercard.top_up(20)
+        oystercard.touch_in(station)
+        oystercard.touch_out
+        expect(oystercard.all_stations).to eq station
+      end
+
+    end
 end

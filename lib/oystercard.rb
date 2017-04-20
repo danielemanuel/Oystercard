@@ -28,6 +28,10 @@ class Oystercard
     reset_entry_station
   end
 
+  def all_stations
+
+  end 
+
   private
 
   attr_writer :balance, :entry_station
