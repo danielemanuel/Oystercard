@@ -61,6 +61,7 @@ class Oystercard
   end
 
   def update_stations_list(station)
+
     all_stations << station
 
   end

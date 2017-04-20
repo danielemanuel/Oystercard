@@ -88,6 +88,13 @@ describe Oystercard do
         oystercard.touch_out(exit_station)
         expect(oystercard.all_stations).to eq [entry_station, exit_station]
       end
+
+      it "sould store the journeys in a hash" do
+        oystercard.top_up(20)
+        oystercard.touch_in(entry_station)
+        oystercard.touch_out(exit_station)
+        expect(oystercard.all_stations).to eq {[entry_station, exit_station]}
+      end
     end
     end
 end
