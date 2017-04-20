@@ -53,6 +53,7 @@ describe Oystercard do
   end
 
   describe '#touch_out' do
+    let(:station) {double(:station)}
     xit 'changes #in_journey to false' do
       oystercard.top_up(10)
       oystercard.touch_in
@@ -72,7 +73,7 @@ describe Oystercard do
 
       it "resets the entry_station when you touch_out" do
         oystercard.top_up(20)
-        oystercard.touch_in
+        oystercard.touch_in(station)
         oystercard.in_journey?
         oystercard.touch_out
         expect(oystercard.entry_station).to be_nil
