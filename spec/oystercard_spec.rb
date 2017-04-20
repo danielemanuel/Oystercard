@@ -21,14 +21,7 @@ describe Oystercard do
     end
   end
 
-  describe '#in_journey?' do
-    it 'Expects #in_journey to return false' do
-      expect(oystercard.in_journey?).to eq false
-    end
-  end
-
   describe '#touch_in' do
-    let(:station) { double(:station) }
     xit 'changes #in_journey? to true' do
       oystercard.top_up(20)
       expect { oystercard.touch_in }.to change { oystercard.in_journey? }.to true
@@ -48,7 +41,6 @@ describe Oystercard do
   end
 
   describe '#touch_out' do
-
     xit 'changes #in_journey to false' do
       oystercard.top_up(10)
       oystercard.touch_in
@@ -57,7 +49,6 @@ describe Oystercard do
     it 'raises error if touch_out when not in journey' do
       expect { oystercard.touch_out }.to raise_error 'ERROR! Not travelling!'
     end
-
       context "change balance" do
         xit "deducts fare" do
           oystercard.top_up(20)
@@ -81,6 +72,6 @@ describe Oystercard do
         oystercard.touch_out
         expect(oystercard.entry_station).to be_nil
       end
-end
+  end
 
 end
