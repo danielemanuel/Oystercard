@@ -72,6 +72,8 @@ describe Oystercard do
         oystercard.touch_out
         expect(oystercard.entry_station).to be_nil
       end
+
+      it { is_expected.to respond_to :all_stations }
   end
 
 end
