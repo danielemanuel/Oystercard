@@ -24,7 +24,7 @@ class Oystercard
     store_entry_station(station)
     # update_stations_list
   end
-
+  
   def touch_out(station)
     raise 'ERROR! Not travelling!' if !in_journey?
     deduct(FARE)
