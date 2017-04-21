@@ -5,7 +5,7 @@ class Oystercard
 
   def initialize(balance = 0)
     @balance = balance
-    @all_stations = []
+    @all_stations = {}
   end
 
   def top_up(amount = 0)
@@ -31,7 +31,6 @@ class Oystercard
     update_stations_list(station)
   end
 
-
   private
 
   attr_writer :balance, :entry_station, :all_stations
@@ -53,7 +52,11 @@ class Oystercard
   end
 
   def store_entry_station(station)
-      self.entry_station = station
+    self.entry_station = station
+  end
+
+  def store_exit_station(station)
+    self.exit_station = station
   end
 
   def reset_entry_station
@@ -61,9 +64,7 @@ class Oystercard
   end
 
   def update_stations_list(station)
-
-    all_stations << station
-
+      @all_stations << [:entry_station, :exit_station]
   end
 
 end
